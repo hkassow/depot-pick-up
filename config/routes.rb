@@ -1,12 +1,10 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  # Defines the root path route ("/")
-  # root "articles#index"
-
+  resources :items, :orders, :carts, :cart_order_items
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
   get '/me', to: 'user#show'
+  
   #rerouting to home path
   get '*path',
       to: 'fallback#index',
