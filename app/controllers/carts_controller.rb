@@ -24,10 +24,7 @@ class CartsController < ApplicationController
     def checkout
         cart = Cart.find(params[:id])
         order = Order.create(user_id: cart.user_id, active: true)
-        cart.cartorderitems.each { |x| x.update!(imageable: order)}
-        total = 0
-        cart.cartorderitems.each { |x| total+= x.item.price }
-        # custom serializer to return the items (and their quantities) and the total price?
+        cart.cart_order_items.each { |x| x.update!(imageable: order)}
     end
 
     private
