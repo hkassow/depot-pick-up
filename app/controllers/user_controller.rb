@@ -4,6 +4,11 @@ class UserController < ApplicationController
         if (user) 
             render json: user
         end
+        employee = Employee.find_by(id: session[:employee_id])
+        if (employee)
+            render json: employee
+        end
+        
     end
     
 end
