@@ -8,7 +8,7 @@ class CartOrderItemsController < ApplicationController
     end
 
     def create
-        render json: CartOrdertem.create!(cart_order_item_params), status: :created
+        render json: CartOrderItem.create!(cart_order_item_params), status: :created
     end
     
     def update
@@ -24,6 +24,6 @@ class CartOrderItemsController < ApplicationController
     private
 
     def cart_order_item_params
-        params.permit(:imageable, :item_id)
+        params.permit(:imageable_type, :imageable_id, :item_id)
     end
 end

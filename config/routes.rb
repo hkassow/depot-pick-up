@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
 
-  resources :items, :orders, :carts, :cart_order_items
+  resources :items, :orders, :carts, :cart_order_items, :users, :reviews
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
   get '/me', to: 'user#show'
+  get '/checkout/:id', to: "carts#checkout" 
   
   #rerouting to home path
   get '*path',
