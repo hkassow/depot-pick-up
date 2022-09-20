@@ -1,4 +1,4 @@
 class CartOrderItemSerializer < ActiveModel::Serializer
-  attributes :id
+  attributes :id, :imageable
   belongs_to :item
 end
