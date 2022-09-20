@@ -8,7 +8,8 @@ class CartOrderItemsController < ApplicationController
     end
 
     def create
-        render json: CartOrderItem.create!(cart_order_item_params), status: :created
+        render json: CartOrderItem.create!
+        (cart_order_item_params), status: :created
     end
     
     def update
