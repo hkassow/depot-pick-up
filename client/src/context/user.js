@@ -13,6 +13,7 @@ const UserProvider = ({children}) => {
             }
         })
     }, [])
+    console.log('auto logged in as: ', user)
     const  login = (user) => {
         fetch('/login', {
             method: "POST",
@@ -26,15 +27,31 @@ const UserProvider = ({children}) => {
         .then(r => r.json())
         .then(data => setUser(data))
     }
+    const  loginEmployee = (employee) => {
+        fetch('/employee-login', {
+            method: "POST",
+            headers: {
+                "content-type": "application/json"
+            },
+            body: JSON.stringify(employee)
+        })
+        .then(r => r.json())
+        .then(data => {
+            setUser(data)
+            console.log("logged in as employee:", data)
+        })
+    }
     const logout = () => {
         fetch('/logout', {
             method: "DELETE"
         })
         .then(console.log('logged out'))
     }
-    console.log('auto logged in as: ', user)
+    if (user?.clearance_level) {
+        console.log("EMPLOYEE LOGGED IN")
+      }
     return (
-        <UserContext.Provider value = {{user, login, logout}}>
+        <UserContext.Provider value = {{user, login, loginEmployee, logout}}>
             {children}
         </UserContext.Provider>
     )
