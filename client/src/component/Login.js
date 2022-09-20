@@ -2,6 +2,7 @@ import { GoogleLogin } from '@react-oauth/google';
 import jwt_decode from "jwt-decode"
 import { useContext } from 'react';
 import { UserContext } from '../context/user';
+import EmployeeLogin from './EmployeeLogin';
 const Login = () => {
     const { login, logout } = useContext(UserContext)
     const onSuccess = (res) => {
@@ -20,7 +21,9 @@ const Login = () => {
         cookiePolicy={'single_host_origin'}
         isSignedIn={true}
         />
-
+        <br/><br/><br/><br/><br/><br/>
+        <EmployeeLogin></EmployeeLogin>
+        <br/><br/><br/><br/><br/><br/>
         <button onClick={() => logout()}>logout</button>
         </>
     )
